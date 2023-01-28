@@ -78,17 +78,17 @@ class PaperBook(Book):
         super().__init__(name, author)
         self._pages = pages
 
-    def __str__(self):
+        def __repr__(self):
         '''
-        Строковый метод класса Book
-        :return: возвращает название книги и её автора
+        Cтроковый метод, но который возвращает валидную питоновскую строку
+        :return: Питоновская строка, которой можно инициализировать объект
 
         Примеры:
         >>> book = PaperBook('War and Peace', 'Leo Tolstoy', 1225)
-        >>> print(book)
-        Бумажная книга War and Peace. Автор Leo Tolstoy.
+        >>> print(repr(book))
+        PaperBook(name='War and Peace', author='Leo Tolstoy', pages=1225)
         '''
-        return f"Бумажная книга {self.name}. Автор {self.author}."
+        return f"{self.__class__.__name__}(name={self.name!r}, author={self.author!r}, pages={self.pages!r})"
 
     @property
     def pages(self) -> int:
@@ -139,17 +139,17 @@ class AudioBook(Book):
         super().__init__(name, author)
         self._duration = duration
 
-    def __str__(self):
+    def __repr__(self):
         '''
-        Строковый метод класса Book
-        :return: возвращает название книги и её автора
+        Cтроковый метод, но который возвращает валидную питоновскую строку
+        :return: Питоновская строка, которой можно инициализировать объект
 
         Примеры:
         >>> book = AudioBook('Harry Potter', 'Joanne Rowling', 15.133)
-        >>> print(book)
-        Аудиокнига Harry Potter. Автор Joanne Rowling.
+        >>> print(repr(book))
+        AudioBook(name='Harry Potter', author='Joanne Rowling', duration=15.133)
         '''
-        return f"Аудиокнига {self.name}. Автор {self.author}."
+        return f"{self.__class__.__name__}(name={self.name!r}, author={self.author!r}, duration={self.duration!r})"
 
     @property
     def duration(self) -> float:
